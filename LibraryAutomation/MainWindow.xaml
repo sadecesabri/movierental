@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryAutomation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="Kütüphanem" Height="450" Width="320" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="books_x1J_icon.ico" WindowStyle="ThreeDBorderWindow">
+
+    <Grid Background="#59B89E2C">
+        <TextBox HorizontalAlignment="Left" Height="26" Margin="85,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="138"/>
+        <TextBox HorizontalAlignment="Left" Height="26" Margin="85,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="138"/>
+        <Label Content="Kullanıcı Adı:
+               " HorizontalAlignment="Left" Margin="85,62,0,0" VerticalAlignment="Top" Width="97" RenderTransformOrigin="1.333,-0.731" Height="29"/>
+        <Label Content="Şifre:
+" HorizontalAlignment="Left" Margin="85,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.538,0.077" Height="29" Width="45"/>
+        <Button x:Name="buttonLogin" Content="Giriş" HorizontalAlignment="Left" Margin="85,195,0,0" VerticalAlignment="Top" Width="138" Height="35" Background="#FF5BB432" Foreground="White"/>
+
     </Grid>
 </Window>
