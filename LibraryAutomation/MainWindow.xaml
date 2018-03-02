@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="Kütüphanem" Height="450" Width="320" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="books_x1J_icon.ico" WindowStyle="ThreeDBorderWindow">
 
-    <Grid Background="#59B89E2C">
-        <TextBox HorizontalAlignment="Left" Height="26" Margin="85,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="138"/>
-        <TextBox HorizontalAlignment="Left" Height="26" Margin="85,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="138"/>
+    <Grid Background="#59B89E2C" Loaded="Grid_Loaded">
+        <TextBox x:Name="textBoxID" HorizontalAlignment="Left" Height="26" Margin="85,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="138" VerticalContentAlignment="Center"/>
+        <PasswordBox x:Name="textBoxPassword" HorizontalAlignment="Left" Height="26" Margin="85,146,0,0" VerticalAlignment="Top" Width="138" VerticalContentAlignment="Center"/>
         <Label Content="Kullanıcı Adı:
                " HorizontalAlignment="Left" Margin="85,62,0,0" VerticalAlignment="Top" Width="97" RenderTransformOrigin="1.333,-0.731" Height="29"/>
         <Label Content="Şifre:
