@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Security.Cryptography;
 using System.Windows.Shapes;
 
 namespace LibraryAutomation
@@ -28,6 +29,7 @@ namespace LibraryAutomation
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             Keyboard.Focus(textBoxID);
+
         }
     }
 }
