@@ -14,7 +14,7 @@
                " HorizontalAlignment="Left" Margin="85,62,0,0" VerticalAlignment="Top" Width="97" RenderTransformOrigin="1.333,-0.731" Height="29"/>
         <Label Content="Şifre:
 " HorizontalAlignment="Left" Margin="85,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.538,0.077" Height="29" Width="45"/>
-        <Button x:Name="buttonLogin" Content="Giriş" HorizontalAlignment="Left" Margin="85,195,0,0" VerticalAlignment="Top" Width="138" Height="35" Background="#FF5BB432" Foreground="White"/>
+        <Button x:Name="buttonLogin" Content="Giriş" HorizontalAlignment="Left" Margin="85,195,0,0" VerticalAlignment="Top" Width="138" Height="35" Background="#FF5BB432" Foreground="White" Click="buttonLogin_Click"/>
 
     </Grid>
 </Window>
