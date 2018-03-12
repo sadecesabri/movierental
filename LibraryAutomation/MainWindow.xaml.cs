@@ -22,7 +22,7 @@ namespace LibraryAutomation
 
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
-            //String value = Security.Hash(textBoxPassword.Password);
+            String value = Security.Hash(textBoxPassword.Password);
             //Security.ValidatePassword(textBoxPassword.Password, value);
             string connectionString = Path.GetFullPath(@"..\..\") + "Database\\database.db";
         }
