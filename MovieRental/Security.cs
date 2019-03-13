@@ -1,5 +1,6 @@
 ﻿using BCrypt;
-namespace LibraryAutomation
+namespace MovieRental
+
 {
     static class Security
     {
