@@ -6,25 +6,27 @@
         xmlns:local="clr-namespace:MovieRental"
         mc:Ignorable="d"
         Title="BookLogicUI" Height="600" Width="440" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
-    <Grid Background="#59B89E2C">
-        <TextBox x:Name="textBoxID" HorizontalAlignment="Right" IsEnabled="False" Height="23" VerticalContentAlignment="Center" Margin="0,23,35,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
-        <TextBox x:Name="textBoxBookName" HorizontalAlignment="Right" Height="23" Margin="0,58,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
-        <TextBox x:Name="textBoxAuthor" HorizontalAlignment="Right" Height="23" Margin="0,93,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
-        <TextBox x:Name="textBoxPublishDate" HorizontalAlignment="Right" Height="23" Margin="0,128,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
-        <TextBox x:Name="textBoxTranslater" HorizontalAlignment="Right" Height="23" Margin="0,163,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
-        <TextBox x:Name="textBoxCategory" HorizontalAlignment="Right" Height="23" Margin="0,198,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
-        <TextBox x:Name="textBoxPage" HorizontalAlignment="Right" Height="23" Margin="0,233,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
-        <TextBox x:Name="textBoxBorrowedBy" HorizontalAlignment="Right" Height="23" Margin="0,268,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
-        <Label Content="ID :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,310,0"/>
-        <Label Content="Book Name :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,55,310,0"/>
-        <Label Content="Author :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,90,310,0"/>
-        <Label Content="Publish Date (Year) :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,125,310,0"/>
-        <Label Content="Translater :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,160,310,0"/>
-        <Label Content="Category :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,195,310,0"/>
-        <Label Content="Page :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,230,310,0"/>
-        <Label Content="Borrowed By :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,265,310,0"/>
-        <Button x:Name="buttonAccept" Content="Tamam" Background="#FF5BB432" Foreground="White" HorizontalAlignment="Left" Margin="77,373,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="buttonAccept_Click"/>
-        <Button Content="İptal" HorizontalAlignment="Left" Margin="265,373,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="Button_Click"/>
+    <Grid Background="#212121">
+        <TextBox Background="#dfe4ea" x:Name="textBoxID" HorizontalAlignment="Right" IsEnabled="False" Height="23" VerticalContentAlignment="Center" Margin="0,23,35,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
+        <TextBox Background="#dfe4ea" x:Name="textBoxMovieName" HorizontalAlignment="Right" Height="23" Margin="0,58,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
+        <TextBox Background="#dfe4ea" x:Name="textBoxDirector" HorizontalAlignment="Right" Height="23" Margin="0,93,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
+        <TextBox Background="#dfe4ea" x:Name="textBoxReleaseDate" HorizontalAlignment="Right" Height="23" Margin="0,128,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
+        <TextBox Background="#dfe4ea" x:Name="textBoxIMDB" HorizontalAlignment="Right" Height="23" Margin="0,163,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
+        <TextBox Background="#dfe4ea" x:Name="textBoxCategory" HorizontalAlignment="Right" Height="23" Margin="0,198,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
+        <TextBox Background="#dfe4ea" x:Name="textBoxDuration" HorizontalAlignment="Right" Height="23" Margin="0,233,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
+        <TextBox Background="#dfe4ea" x:Name="textBoxStockCount" HorizontalAlignment="Right" Height="23" Margin="0,268,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
+        <TextBox Background="#dfe4ea" x:Name="textBoxPrice" HorizontalAlignment="Right" Height="23" Margin="0,301,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
+        <Label Foreground="#dfe4ea" Content="ID :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,310,0"/>
+        <Label Foreground="#dfe4ea" Content="Movie Name :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,55,310,0"/>
+        <Label Foreground="#dfe4ea" Content="Director :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,90,310,0"/>
+        <Label Foreground="#dfe4ea" Content="Release Date (Year) :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,125,310,0"/>
+        <Label Foreground="#dfe4ea" Content="IMDB :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,160,310,0"/>
+        <Label Foreground="#dfe4ea" Content="Category :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,195,310,0"/>
+        <Label Foreground="#dfe4ea" Content="Duration (minute) :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,230,310,0"/>
+        <Label Foreground="#dfe4ea" Content="Stock Count :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,265,310,0"/>
+        <Label Foreground="#dfe4ea" Content="Price :" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,300,310,0"/>
+        <Button x:Name="buttonAccept" Content="OK" Background="#1db954" Foreground="#FFDFE4EA" HorizontalAlignment="Left" Margin="77,373,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="buttonAccept_Click"/>
+        <Button Background="#c0392b" Content="Cancel" HorizontalAlignment="Left" Margin="265,373,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="Button_Click" Foreground="#FFDFE4EA"/>
 
     </Grid>
 </Window>

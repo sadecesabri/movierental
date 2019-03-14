@@ -12,7 +12,7 @@ namespace MovieRental
     {
         public static void AddMovie(string connectionString, Movies movie)
         {     
-            string query = "INSERT INTO movies (movie_name, director, release_date, imdb, category, duration, stock_count) VALUES(@movie_name, @director, @release_date, @imdb, @category, @duration, @stock_count);";
+            string query = "INSERT INTO movies (movie_name, director, release_date, imdb, category, duration, stock_count, price) VALUES(@movie_name, @director, @release_date, @imdb, @category, @duration, @stock_count, @price);";
             //INSERT INTO books (book_name, author, publish_date, translater, category, Page, borrowed_by) VALUES('aa', 'aa', 1, 'a', 'a', 1, 'a');
 
             using (var con = new SQLiteConnection(connectionString))
@@ -27,6 +27,8 @@ namespace MovieRental
                 command.Parameters.AddWithValue("@category", movie.Category);
                 command.Parameters.AddWithValue("@Page", movie.Duration);
                 command.Parameters.AddWithValue("@borrowed_by", movie.StockCount);
+                command.Parameters.AddWithValue("@price", movie.Price);
+
                 command.ExecuteNonQuery();    
             }
         }
@@ -46,7 +48,7 @@ namespace MovieRental
 
         public static void EditMovie(string connectionString, Movies movie)
         {
-            string query = "UPDATE movies SET movie_name = @MovieName, director = @Director, release_date = @ReleaseDate, imdb = @IMDB, category = @Category, duration = @Duration, stock_count = @StockCount WHERE Id = @ID;";
+            string query = "UPDATE movies SET movie_name = @MovieName, director = @Director, release_date = @ReleaseDate, imdb = @IMDB, category = @Category, duration = @Duration, stock_count = @StockCount, price = @Price WHERE Id = @ID;";
 
             using (var con = new SQLiteConnection(connectionString))
             {
@@ -60,6 +62,7 @@ namespace MovieRental
                 command.Parameters.AddWithValue("@Category", movie.Category);
                 command.Parameters.AddWithValue("@Duration", movie.Duration);
                 command.Parameters.AddWithValue("@StockCount", movie.StockCount);
+                command.Parameters.AddWithValue("@Price", movie.Price);
                 command.Parameters.AddWithValue("@ID", movie.MovieID);
                 command.ExecuteNonQuery();
             }

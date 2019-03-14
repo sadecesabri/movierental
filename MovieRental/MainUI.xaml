@@ -6,22 +6,22 @@
         xmlns:local="clr-namespace:MovieRental"
         mc:Ignorable="d"
         Title="MainUI" Height="1080" Width="1920" WindowStyle="None" WindowState="Maximized" MouseDown="Window_MouseDown" Loaded="MainWindow_Loaded">
-    <Grid Background="#59B89E2C">
+    <Grid Background="#212121">
         <Button x:Name="exit_Button" Content="X" HorizontalAlignment="Right" Margin="0,00,0,0" VerticalAlignment="Top" Width="30" Background="#FFE02525" Height="30" Click="Button_Click"/>
-        <Button x:Name="buttonAddMovie" Foreground="White" Content="Ekle" HorizontalAlignment="Right" Margin="0,120,50,0" VerticalAlignment="Top" Width="180" Height="60" Click="buttonAddMovie_Click" Background="#FF3498DB"/>
-        <Button x:Name="buttonDeleteMovie" Foreground="White" Content="Sil" HorizontalAlignment="Right" Margin="0,280,50,0" VerticalAlignment="Top" Width="180" Height="60" Click="buttonDeleteMovie_Click" Background="#FF3498DB"/>
-        <Button x:Name="buttonEditMovie" Foreground="White" Content="Düzenle" HorizontalAlignment="Right" Margin="0,200,50,0" VerticalAlignment="Top" Width="180" Height="60" Click="buttonEditMovie_Click" Background="#FF3498DB"/>
+        <Button x:Name="buttonAddMovie" Foreground="White" Content="Ekle" HorizontalAlignment="Right" Margin="0,120,50,0" VerticalAlignment="Top" Width="180" Height="60" Click="buttonAddMovie_Click" Background="#01579B"/>
+        <Button x:Name="buttonDeleteMovie" Foreground="White" Content="Sil" HorizontalAlignment="Right" Margin="0,280,50,0" VerticalAlignment="Top" Width="180" Height="60" Click="buttonDeleteMovie_Click" Background="#01579B"/>
+        <Button x:Name="buttonEditMovie" Foreground="White" Content="Düzenle" HorizontalAlignment="Right" Margin="0,200,50,0" VerticalAlignment="Top" Width="180" Height="60" Click="buttonEditMovie_Click" Background="#01579B"/>
 
         <TabControl Margin="0,0,285,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#00ffffff">
-            <TabItem Header="General">
-                <DataGrid x:Name="dataGrid" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" IsReadOnly="True" Background="#59FFFFFF" RowBackground="#59B89E2C" SelectionMode="Single">
+            <TabItem Header="Movies" Background="#121212" Foreground="#dfe4ea" Height="25">
+                <DataGrid Background="#171717" x:Name="dataGrid" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" IsReadOnly="True" RowBackground="#dfe4ea" SelectionMode="Single">
                 </DataGrid>
             </TabItem>
-            <TabItem Header="Security" />
-            <TabItem Header="Details" />
+            <TabItem Header="Sales" Background="#121212" Foreground="#dfe4ea" Height="25" VerticalAlignment="Top" />
+            <TabItem Header="Employees" Background="#121212" Foreground="#dfe4ea" Height="25"/>
         </TabControl>
 
-        
-        <Button x:Name="buttonAddUser" IsEnabled="False" Foreground="White" Content="Üye Ekle" HorizontalAlignment="Right" Margin="0,0,50,50" VerticalAlignment="Bottom" Width="180" Height="60" Click="buttonAddUser_Click" Background="#FF5BB432"/>
+
+        <Button x:Name="buttonAddUser" IsEnabled="False" Foreground="White" Content="Üye Ekle" HorizontalAlignment="Right" Margin="0,0,50,50" VerticalAlignment="Bottom" Width="180" Height="60" Click="buttonAddUser_Click" Background="#1db954"/>
     </Grid>
 </Window>

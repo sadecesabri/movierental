@@ -16,8 +16,9 @@ namespace MovieRental
         public string Category { get; set; }
         public int Duration { get; set; }
         public int StockCount { get; set; }
+        public double Price { get; set; }
 
-        public Movies(int movieID, string movieName, string director, int releaseDate, double imdb, string category, int duration, int stockCount)
+        public Movies(int movieID, string movieName, string director, int releaseDate, double imdb, string category, int duration, int stockCount, double price)
         {
             this.MovieID = movieID;
             this.MovieName = movieName;
@@ -27,6 +28,7 @@ namespace MovieRental
             this.Category = category;
             this.Duration = duration;
             this.StockCount = stockCount;
+            this.Price = price;
         }
 
         public Movies()

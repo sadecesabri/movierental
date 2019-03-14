@@ -70,10 +70,11 @@ namespace MovieRental
                 movie.MovieName = ((DataRowView)dataGrid.SelectedItem).Row.ItemArray[1].ToString();
                 movie.Director = ((DataRowView)dataGrid.SelectedItem).Row.ItemArray[2].ToString();
                 movie.ReleaseDate = Convert.ToInt32(((DataRowView)dataGrid.SelectedItem).Row.ItemArray[3]);
-                movie.Imdb = Convert.ToInt32(((DataRowView)dataGrid.SelectedItem).Row.ItemArray[4]);
+                movie.Imdb = Convert.ToDouble(((DataRowView)dataGrid.SelectedItem).Row.ItemArray[4]);
                 movie.Category = ((DataRowView)dataGrid.SelectedItem).Row.ItemArray[5].ToString(); ;
                 movie.Duration = Convert.ToInt32(((DataRowView)dataGrid.SelectedItem).Row.ItemArray[6]);
                 movie.StockCount = Convert.ToInt32(((DataRowView)dataGrid.SelectedItem).Row.ItemArray[7]);
+                movie.Price = Convert.ToDouble(((DataRowView)dataGrid.SelectedItem).Row.ItemArray[8]);
 
                 BookLogicUI bookLogicUI = new BookLogicUI(movie, connectionString, "edit", this);
                 bookLogicUI.Show();
@@ -87,29 +88,47 @@ namespace MovieRental
 
         void SetDataGrid()
         {
+
+
+            //var style = new Style(typeof(System.Windows.Controls.Primitives
+            //    .DataGridColumnHeader));
+            //style.Setters.Add(new Setter
+            //{
+            //    Property = BackgroundProperty,
+            //    Value = Brushes.Yellow
+            //});
+
+
+            //dataGrid.Columns[0].HeaderStyle = style;
+
+
+
             dataGrid.Columns[0].Header = "ID";
             dataGrid.Columns[0].Width = 50;
 
             dataGrid.Columns[1].Header = "Movie Name";
-            dataGrid.Columns[1].Width = 250;
+            dataGrid.Columns[1].Width = 275;
 
             dataGrid.Columns[2].Header = "Director";
-            dataGrid.Columns[2].Width = 200;
+            dataGrid.Columns[2].Width = 250;
 
             dataGrid.Columns[3].Header = "Release Date";
-            dataGrid.Columns[3].Width = 75;
+            dataGrid.Columns[3].Width = 150;
 
             dataGrid.Columns[4].Header = "IMDB";
-            dataGrid.Columns[4].Width = 200;
+            dataGrid.Columns[4].Width = 120;
 
             dataGrid.Columns[5].Header = "Category";
-            dataGrid.Columns[5].Width = 125;
+            dataGrid.Columns[5].Width = 140;
 
             dataGrid.Columns[6].Header = "Duration";
-            dataGrid.Columns[6].Width = 75;
+            dataGrid.Columns[6].Width = 90;
 
             dataGrid.Columns[7].Header = "Stock Count";
-            dataGrid.Columns[7].Width = 200;
+            dataGrid.Columns[7].Width = 100;
+
+            dataGrid.Columns[8].Header = "Price";
+            dataGrid.Columns[8].Width = 60;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

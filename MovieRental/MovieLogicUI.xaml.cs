@@ -29,13 +29,14 @@ namespace MovieRental
             this.mode = mode;
             this.main = mw;
             textBoxID.Text = movie.MovieID.ToString();
-            textBoxBookName.Text = movie.MovieName;
-            textBoxAuthor.Text = movie.Director;
-            textBoxPublishDate.Text = movie.ReleaseDate.ToString();
-            textBoxTranslater.Text = movie.Imdb.ToString();
+            textBoxMovieName.Text = movie.MovieName;
+            textBoxDirector.Text = movie.Director;
+            textBoxReleaseDate.Text = movie.ReleaseDate.ToString();
+            textBoxIMDB.Text = movie.Imdb.ToString();
             textBoxCategory.Text = movie.Category;
-            textBoxPage.Text = movie.Duration.ToString();
-            textBoxBorrowedBy.Text = movie.StockCount.ToString();
+            textBoxDuration.Text = movie.Duration.ToString();
+            textBoxStockCount.Text = movie.StockCount.ToString();
+            textBoxPrice.Text = movie.Price.ToString();
         }
 
         public BookLogicUI(string connectionString, string mode, MainUI mw)
@@ -75,11 +76,11 @@ namespace MovieRental
 
         private bool CheckInputs()
         {
-            if (textBoxBookName.Text != null && textBoxAuthor.Text != null && textBoxPublishDate.Text != null && textBoxCategory.Text != null && textBoxPage.Text != null)
+            if (textBoxMovieName.Text != null && textBoxDirector.Text != null && textBoxReleaseDate.Text != null && textBoxCategory.Text != null && textBoxDuration.Text != null)
             {
                 int tmp;
-                bool date = Int32.TryParse(textBoxPublishDate.Text, out tmp);
-                bool page = Int32.TryParse(textBoxPage.Text, out tmp);
+                bool date = Int32.TryParse(textBoxReleaseDate.Text, out tmp);
+                bool page = Int32.TryParse(textBoxDuration.Text, out tmp);
                 if (date && page)
                 {
                     return true;
@@ -100,13 +101,14 @@ namespace MovieRental
         private Movies TextBox2Book()
         {
             Movies movie = new Movies();
-            movie.MovieName = textBoxBookName.Text;
-            movie.Director = textBoxAuthor.Text;
-            movie.ReleaseDate = Convert.ToInt32(textBoxPublishDate.Text);
-            movie.Imdb = Convert.ToInt32(textBoxTranslater.Text);
+            movie.MovieName = textBoxMovieName.Text;
+            movie.Director = textBoxDirector.Text;
+            movie.ReleaseDate = Convert.ToInt32(textBoxReleaseDate.Text);
+            movie.Imdb = Convert.ToDouble(textBoxIMDB.Text);
             movie.Category = textBoxCategory.Text;
-            movie.Duration = Convert.ToInt32(textBoxPage.Text);
-            movie.StockCount = Convert.ToInt32(textBoxBorrowedBy.Text);
+            movie.Duration = Convert.ToInt32(textBoxDuration.Text);
+            movie.StockCount = Convert.ToInt32(textBoxStockCount.Text);
+            movie.Price = Convert.ToDouble(textBoxPrice);
 
             return movie;
         }
