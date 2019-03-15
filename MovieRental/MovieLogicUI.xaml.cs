@@ -33,7 +33,9 @@ namespace MovieRental
             textBoxDirector.Text = movie.Director;
             textBoxReleaseDate.Text = movie.ReleaseDate.ToString();
             textBoxIMDB.Text = movie.Imdb.ToString();
-            textBoxCategory.Text = movie.Category;
+
+            var cbItem = comboBoxCategory.Items.OfType<ComboBoxItem>().FirstOrDefault(x => x.Content.ToString() == movie.Category);
+            comboBoxCategory.SelectedIndex = comboBoxCategory.Items.IndexOf(cbItem);
             textBoxDuration.Text = movie.Duration.ToString();
             textBoxStockCount.Text = movie.StockCount.ToString();
             textBoxPrice.Text = movie.Price.ToString();
@@ -61,13 +63,13 @@ namespace MovieRental
                 {
                     movie.MovieID = Convert.ToInt32(textBoxID.Text);
                     DatabaseTransactions.EditMovie(connectionString, movie);
-                    main.LoadDataGrid();
+                    main.LoadDataGrid(main.dataGridMovies, "movies");
                     this.Close();
                 }
                 else if (mode == "new")
                 {
                     DatabaseTransactions.AddMovie(connectionString, movie);
-                    main.LoadDataGrid();
+                    main.LoadDataGrid(main.dataGridMovies, "movies");
                     this.Close();
                 }
             }
@@ -76,7 +78,7 @@ namespace MovieRental
 
         private bool CheckInputs()
         {
-            if (textBoxMovieName.Text != null && textBoxDirector.Text != null && textBoxReleaseDate.Text != null && textBoxCategory.Text != null && textBoxDuration.Text != null)
+            if (textBoxMovieName.Text != null && textBoxDirector.Text != null && textBoxReleaseDate.Text != null && textBoxDuration.Text != null)
             {
                 int tmp;
                 bool date = Int32.TryParse(textBoxReleaseDate.Text, out tmp);
@@ -105,11 +107,10 @@ namespace MovieRental
             movie.Director = textBoxDirector.Text;
             movie.ReleaseDate = Convert.ToInt32(textBoxReleaseDate.Text);
             movie.Imdb = Convert.ToDouble(textBoxIMDB.Text);
-            movie.Category = textBoxCategory.Text;
+            movie.Category = comboBoxCategory.Text;
             movie.Duration = Convert.ToInt32(textBoxDuration.Text);
             movie.StockCount = Convert.ToInt32(textBoxStockCount.Text);
             movie.Price = Convert.ToDouble(textBoxPrice);
-
             return movie;
         }
     }

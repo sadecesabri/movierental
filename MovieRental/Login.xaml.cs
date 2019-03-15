@@ -19,6 +19,7 @@ namespace MovieRental
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             Keyboard.Focus(textBoxID);
+            //textBoxID.Text = Security.Hash("admin");
         }
         
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
@@ -34,7 +35,7 @@ namespace MovieRental
             }
             else
             {
-                MessageBox.Show("Şifre veya kullanıcı adı yanlış!");
+                MessageBox.Show("Invalid username or password!");
             }
         }
 

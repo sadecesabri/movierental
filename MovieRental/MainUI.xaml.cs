@@ -33,7 +33,10 @@ namespace MovieRental
                 buttonAddUser.IsEnabled = true;
             }
 
-            LoadDataGrid();
+            LoadDataGrid(dataGridMovies, "movies");
+            LoadDataGrid(dataGridUsers, "users");
+            LoadDataGrid(dataGridSales, "sales");
+            LoadDataGrid(dataGridRents, "rents");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -49,11 +52,11 @@ namespace MovieRental
 
         private void buttonDeleteMovie_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItem != null)
+            if (dataGridMovies.SelectedItem != null)
             {
-                int movieID = Convert.ToInt32(((DataRowView)dataGrid.SelectedItem).Row.ItemArray[0]);
+                int movieID = Convert.ToInt32(((DataRowView)dataGridMovies.SelectedItem).Row.ItemArray[0]);
                 DatabaseTransactions.DeleteMovie(connectionString, movieID);
-                LoadDataGrid();
+                LoadDataGrid(dataGridMovies, "movies");
             }
             else
             {
@@ -63,18 +66,18 @@ namespace MovieRental
 
         private void buttonEditMovie_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItem != null)
+            if (dataGridMovies.SelectedItem != null)
             {
                 Movies movie = new Movies();
-                movie.MovieID = Convert.ToInt32(((DataRowView)dataGrid.SelectedItem).Row.ItemArray[0]);
-                movie.MovieName = ((DataRowView)dataGrid.SelectedItem).Row.ItemArray[1].ToString();
-                movie.Director = ((DataRowView)dataGrid.SelectedItem).Row.ItemArray[2].ToString();
-                movie.ReleaseDate = Convert.ToInt32(((DataRowView)dataGrid.SelectedItem).Row.ItemArray[3]);
-                movie.Imdb = Convert.ToDouble(((DataRowView)dataGrid.SelectedItem).Row.ItemArray[4]);
-                movie.Category = ((DataRowView)dataGrid.SelectedItem).Row.ItemArray[5].ToString(); ;
-                movie.Duration = Convert.ToInt32(((DataRowView)dataGrid.SelectedItem).Row.ItemArray[6]);
-                movie.StockCount = Convert.ToInt32(((DataRowView)dataGrid.SelectedItem).Row.ItemArray[7]);
-                movie.Price = Convert.ToDouble(((DataRowView)dataGrid.SelectedItem).Row.ItemArray[8]);
+                movie.MovieID = Convert.ToInt32(((DataRowView)dataGridMovies.SelectedItem).Row.ItemArray[0]);
+                movie.MovieName = ((DataRowView)dataGridMovies.SelectedItem).Row.ItemArray[1].ToString();
+                movie.Director = ((DataRowView)dataGridMovies.SelectedItem).Row.ItemArray[2].ToString();
+                movie.ReleaseDate = Convert.ToInt32(((DataRowView)dataGridMovies.SelectedItem).Row.ItemArray[3]);
+                movie.Imdb = Convert.ToDouble(((DataRowView)dataGridMovies.SelectedItem).Row.ItemArray[4]);
+                movie.Category = ((DataRowView)dataGridMovies.SelectedItem).Row.ItemArray[5].ToString();
+                movie.Duration = Convert.ToInt32(((DataRowView)dataGridMovies.SelectedItem).Row.ItemArray[6]);
+                movie.StockCount = Convert.ToInt32(((DataRowView)dataGridMovies.SelectedItem).Row.ItemArray[7]);
+                movie.Price = Convert.ToDouble(((DataRowView)dataGridMovies.SelectedItem).Row.ItemArray[8]);
 
                 BookLogicUI bookLogicUI = new BookLogicUI(movie, connectionString, "edit", this);
                 bookLogicUI.Show();
@@ -86,49 +89,45 @@ namespace MovieRental
 
         }
 
-        void SetDataGrid()
+        void SetMoviesDataGrid()
         {
 
+            dataGridMovies.Columns[0].Header = "ID";
+            dataGridMovies.Columns[0].Width = 50;
 
-            //var style = new Style(typeof(System.Windows.Controls.Primitives
-            //    .DataGridColumnHeader));
-            //style.Setters.Add(new Setter
-            //{
-            //    Property = BackgroundProperty,
-            //    Value = Brushes.Yellow
-            //});
+            dataGridMovies.Columns[1].Header = "Movie Name";
+            dataGridMovies.Columns[1].Width = 275;
 
+            dataGridMovies.Columns[2].Header = "Director";
+            dataGridMovies.Columns[2].Width = 250;
 
-            //dataGrid.Columns[0].HeaderStyle = style;
+            dataGridMovies.Columns[3].Header = "Release Date";
+            dataGridMovies.Columns[3].Width = 150;
 
+            dataGridMovies.Columns[4].Header = "IMDB";
+            dataGridMovies.Columns[4].Width = 120;
 
+            dataGridMovies.Columns[5].Header = "Category";
+            dataGridMovies.Columns[5].Width = 140;
 
-            dataGrid.Columns[0].Header = "ID";
-            dataGrid.Columns[0].Width = 50;
+            dataGridMovies.Columns[6].Header = "Duration";
+            dataGridMovies.Columns[6].Width = 90;
 
-            dataGrid.Columns[1].Header = "Movie Name";
-            dataGrid.Columns[1].Width = 275;
+            dataGridMovies.Columns[7].Header = "Stock Count";
+            dataGridMovies.Columns[7].Width = 100;
 
-            dataGrid.Columns[2].Header = "Director";
-            dataGrid.Columns[2].Width = 250;
+            dataGridMovies.Columns[8].Header = "Price";
+            dataGridMovies.Columns[8].Width = 60;
+        }
 
-            dataGrid.Columns[3].Header = "Release Date";
-            dataGrid.Columns[3].Width = 150;
+        void SetUsersDataGrid()
+        {
+            dataGridUsers.Columns[0].Header = "ID";
+            dataGridMovies.Columns[0].Width = 50;
 
-            dataGrid.Columns[4].Header = "IMDB";
-            dataGrid.Columns[4].Width = 120;
-
-            dataGrid.Columns[5].Header = "Category";
-            dataGrid.Columns[5].Width = 140;
-
-            dataGrid.Columns[6].Header = "Duration";
-            dataGrid.Columns[6].Width = 90;
-
-            dataGrid.Columns[7].Header = "Stock Count";
-            dataGrid.Columns[7].Width = 100;
-
-            dataGrid.Columns[8].Header = "Price";
-            dataGrid.Columns[8].Width = 60;
+            dataGridMovies.Columns[0].Width = 50;
+            dataGridMovies.Columns[0].Width = 50;
+            dataGridMovies.Columns[0].Width = 50;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -143,19 +142,35 @@ namespace MovieRental
             addUserUI.Show();
         }
 
-        public void LoadDataGrid()
+        public void LoadDataGrid(DataGrid grid, string type)
         {
-            dataGrid.ItemsSource = DatabaseTransactions.MovieQuery(connectionString).Tables[0].DefaultView;
-            dataGrid.Items.Refresh();
+            switch (type)
+            {
+                case "movies":
+                    grid.ItemsSource = DatabaseTransactions.MovieQuery(connectionString).Tables[0].DefaultView;
+                    break;
+                case "users":
+                    grid.ItemsSource = DatabaseTransactions.UserQuery(connectionString).Tables[0].DefaultView;
+                    break;
+                case "rents":
+                    grid.ItemsSource = DatabaseTransactions.RentQuery(connectionString).Tables[0].DefaultView;
+                    break;
+                case "sales":
+                    grid.ItemsSource = DatabaseTransactions.SaleQuery(connectionString).Tables[0].DefaultView;
+                    break;
+            }
+            
+            grid.Items.Refresh();
             if (this.IsLoaded)
             {
-                SetDataGrid();
+                SetMoviesDataGrid();
+                SetUsersDataGrid();
             }
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            SetDataGrid();
+            SetMoviesDataGrid();
         }
     }
 }

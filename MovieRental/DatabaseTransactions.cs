@@ -46,6 +46,19 @@ namespace MovieRental
             }
         }
 
+        public static void DeleteUser(string connectionString, int id)
+        {
+            using (var con = new SQLiteConnection(connectionString))
+            {
+                con.Open();
+                string query = "DELETE FROM users WHERE Id = '" + id + "'";
+                using (SQLiteCommand command = new SQLiteCommand(query, con))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
         public static void EditMovie(string connectionString, Movies movie)
         {
             string query = "UPDATE movies SET movie_name = @MovieName, director = @Director, release_date = @ReleaseDate, imdb = @IMDB, category = @Category, duration = @Duration, stock_count = @StockCount, price = @Price WHERE Id = @ID;";
@@ -108,6 +121,58 @@ namespace MovieRental
                 }
             }
         }
+
+        public static DataSet UserQuery(String connectionString)
+        {
+            string query = "select id, username, employee_name from users";
+            using (var con = new SQLiteConnection(connectionString))
+            {
+                con.Open();
+                using (SQLiteCommand command = new SQLiteCommand(query, con))
+                {
+                    DataSet dataSet = new DataSet();
+                    SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, con);
+                    dataAdapter.Fill(dataSet);
+                    con.Close();
+                    return dataSet;
+                }
+            }
+        }
+
+        public static DataSet RentQuery(String connectionString)
+        {
+            string query = "select * from rents";
+            using (var con = new SQLiteConnection(connectionString))
+            {
+                con.Open();
+                using (SQLiteCommand command = new SQLiteCommand(query, con))
+                {
+                    DataSet dataSet = new DataSet();
+                    SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, con);
+                    dataAdapter.Fill(dataSet);
+                    con.Close();
+                    return dataSet;
+                }
+            }
+        }
+
+        public static DataSet SaleQuery(String connectionString)
+        {
+            string query = "select * from sales";
+            using (var con = new SQLiteConnection(connectionString))
+            {
+                con.Open();
+                using (SQLiteCommand command = new SQLiteCommand(query, con))
+                {
+                    DataSet dataSet = new DataSet();
+                    SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, con);
+                    dataAdapter.Fill(dataSet);
+                    con.Close();
+                    return dataSet;
+                }
+            }
+        }
+
 
         public static void UyeEkle(string connectionString, string userName, string password)
         {

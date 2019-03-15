@@ -12,7 +12,19 @@
         <TextBox Background="#dfe4ea" x:Name="textBoxDirector" HorizontalAlignment="Right" Height="23" Margin="0,93,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
         <TextBox Background="#dfe4ea" x:Name="textBoxReleaseDate" HorizontalAlignment="Right" Height="23" Margin="0,128,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
         <TextBox Background="#dfe4ea" x:Name="textBoxIMDB" HorizontalAlignment="Right" Height="23" Margin="0,163,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
-        <TextBox Background="#dfe4ea" x:Name="textBoxCategory" HorizontalAlignment="Right" Height="23" Margin="0,198,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
+        <ComboBox Background="#dfe4ea" x:Name="comboBoxCategory" HorizontalAlignment="Right" Height="23" Margin="0,198,35,0" VerticalContentAlignment="Center" Text="" VerticalAlignment="Top" Width="260">
+            <ComboBoxItem x:Name="item0" Content="Action"/>
+            <ComboBoxItem x:Name="item1" Content="Adventure"/>
+            <ComboBoxItem x:Name="item2" Content="Animation"/>
+            <ComboBoxItem x:Name="item3" Content="Comedy"/>
+            <ComboBoxItem x:Name="item4" Content="Crime"/>
+            <ComboBoxItem x:Name="item5" Content="Documentary"/>
+            <ComboBoxItem x:Name="item6" Content="Drama"/>
+            <ComboBoxItem x:Name="item7" Content="Fantasy"/>
+            <ComboBoxItem x:Name="item8" Content="Horror"/>
+            <ComboBoxItem x:Name="item9" Content="Superhero"/>
+            <ComboBoxItem x:Name="item10" Content="Thriller"/>
+        </ComboBox>
         <TextBox Background="#dfe4ea" x:Name="textBoxDuration" HorizontalAlignment="Right" Height="23" Margin="0,233,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
         <TextBox Background="#dfe4ea" x:Name="textBoxStockCount" HorizontalAlignment="Right" Height="23" Margin="0,268,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
         <TextBox Background="#dfe4ea" x:Name="textBoxPrice" HorizontalAlignment="Right" Height="23" Margin="0,301,35,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
