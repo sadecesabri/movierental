@@ -1,25 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MovieRental
 
 {
-    /// <summary>
-    /// Interaction logic for MainUI.xaml
-    /// </summary>
     public partial class MainUI : Window
     {
         private string connectionString;
@@ -31,6 +18,7 @@ namespace MovieRental
             if(userType == 0)
             {
                 buttonAddUser.IsEnabled = true;
+                buttonDeleteUser.IsEnabled = true;
             }
 
             LoadDataGrid(dataGridMovies, "movies");
@@ -46,7 +34,7 @@ namespace MovieRental
 
         private void buttonAddMovie_Click(object sender, RoutedEventArgs e)
         {
-                BookLogicUI bookLogicUI = new BookLogicUI(connectionString, "new", this);
+            BookLogicUI bookLogicUI = new BookLogicUI(connectionString, "new", this);
             bookLogicUI.Show();
         }
 
@@ -122,12 +110,13 @@ namespace MovieRental
 
         void SetUsersDataGrid()
         {
-            dataGridUsers.Columns[0].Header = "ID";
-            dataGridMovies.Columns[0].Width = 50;
+            dataGridUsers.Items.Refresh();
+            dataGridUsers.Columns[0].Header = "IDddd";
+            dataGridUsers.Columns[0].Width = 50;
 
-            dataGridMovies.Columns[0].Width = 50;
-            dataGridMovies.Columns[0].Width = 50;
-            dataGridMovies.Columns[0].Width = 50;
+            //dataGridMovies.Columns[1].Width = 50;
+            //dataGridMovies.Columns[2].Width = 50;
+            //dataGridMovies.Columns[3].Width = 50;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -159,18 +148,72 @@ namespace MovieRental
                     grid.ItemsSource = DatabaseTransactions.SaleQuery(connectionString).Tables[0].DefaultView;
                     break;
             }
-            
+            employeesTab.IsEnabled = true;
             grid.Items.Refresh();
-            if (this.IsLoaded)
+            if (grid.IsLoaded)
             {
                 SetMoviesDataGrid();
-                SetUsersDataGrid();
             }
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             SetMoviesDataGrid();
+        }
+
+        private void ButtonRentMovie_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGridMovies.SelectedItem != null)
+            {
+                int movieID = Convert.ToInt32(((DataRowView)dataGridMovies.SelectedItem).Row.ItemArray[0]);
+                string movieName = ((DataRowView)dataGridMovies.SelectedItem).Row.ItemArray[1].ToString();
+                int stockCount = Convert.ToInt32(((DataRowView)dataGridMovies.SelectedItem).Row.ItemArray[7]);
+
+                if (stockCount > 0)
+                {
+                    RentMovie rm = new RentMovie(movieID, movieName, stockCount, connectionString, this);
+                    rm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("It's out of stock!");
+                }
+            }
+        }
+
+        private void ButtonSellMovie_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGridMovies.SelectedItem != null)
+            {
+                int movieID = Convert.ToInt32(((DataRowView)dataGridMovies.SelectedItem).Row.ItemArray[0]);
+                string movieName = ((DataRowView)dataGridMovies.SelectedItem).Row.ItemArray[1].ToString();
+                int stockCount = Convert.ToInt32(((DataRowView)dataGridMovies.SelectedItem).Row.ItemArray[7]);
+                stockCount -= 1;
+                if (stockCount > 0)
+                {
+                    DatabaseTransactions.SellMovie(connectionString, movieID, stockCount, movieName);
+                    LoadDataGrid(dataGridSales, "sales");
+                    LoadDataGrid(dataGridMovies, "movies");
+                }
+                else
+                {
+                    MessageBox.Show("It's out of stock!");
+                }
+            }
+        }
+
+        private void ButtonDeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGridUsers.SelectedItem != null)
+            {
+                int userID = Convert.ToInt32(((DataRowView)dataGridUsers.SelectedItem).Row.ItemArray[0]);
+                DatabaseTransactions.DeleteUser(connectionString, userID);
+                LoadDataGrid(dataGridUsers, "users");
+            }
+            else
+            {
+                MessageBox.Show("Bir seçim yapın");
+            }
         }
     }
 }

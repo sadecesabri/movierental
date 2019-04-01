@@ -89,6 +89,9 @@
     <Compile Include="MainUI.xaml.cs">
       <DependentUpon>MainUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RentMovie.xaml.cs">
+      <DependentUpon>RentMovie.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Security.cs" />
     <Page Include="AddUserUI.xaml">
       <SubType>Designer</SubType>
@@ -111,6 +114,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MainUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RentMovie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

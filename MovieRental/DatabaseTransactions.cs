@@ -69,7 +69,7 @@ namespace MovieRental
                 SQLiteCommand command = new SQLiteCommand(con);
                 command.CommandText = query;
                 command.Parameters.AddWithValue("@MovieName", movie.MovieName);
-                command.Parameters.AddWithValue("@Author", movie.Director);
+                command.Parameters.AddWithValue("@Director", movie.Director);
                 command.Parameters.AddWithValue("@ReleaseDate", movie.ReleaseDate);
                 command.Parameters.AddWithValue("@IMDB", movie.Imdb);
                 command.Parameters.AddWithValue("@Category", movie.Category);
@@ -122,9 +122,67 @@ namespace MovieRental
             }
         }
 
+        public static void RentMovie(String connectionString, string renter_name, int item_id, string returnDate, int stockCount, string item_name)
+        {
+            string query = "INSERT INTO rents (name, return_date, item_id, item_name) VALUES (@name, @returnDate, @item_id, @item_name)";
+
+            using (var con = new SQLiteConnection(connectionString))
+            {
+                con.Open();
+                SQLiteCommand command = new SQLiteCommand(con);
+                command.CommandText = query;
+                command.Parameters.AddWithValue("@name", renter_name);
+                command.Parameters.AddWithValue("@returnDate", returnDate);
+                command.Parameters.AddWithValue("@item_id", item_id);
+                command.Parameters.AddWithValue("@item_name", item_name);
+
+                command.ExecuteNonQuery();
+            }
+
+            string query2 = "UPDATE movies SET stock_count = @StockCount WHERE Id = @ID;";
+
+            using (var con = new SQLiteConnection(connectionString))
+            {
+                con.Open();
+                SQLiteCommand command = new SQLiteCommand(con);
+                command.CommandText = query2;
+                command.Parameters.AddWithValue("@StockCount", stockCount);
+                command.Parameters.AddWithValue("@ID", item_id);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public static void SellMovie(String connectionString, int item_id, int stockCount, string item_name)
+        {
+            string query = "INSERT INTO sales (item_id, item_name) VALUES (@item_id, @item_name)";
+
+            using (var con = new SQLiteConnection(connectionString))
+            {
+                con.Open();
+                SQLiteCommand command = new SQLiteCommand(con);
+                command.CommandText = query;
+                command.Parameters.AddWithValue("@item_id", item_id);
+                command.Parameters.AddWithValue("@item_name", item_name);
+
+                command.ExecuteNonQuery();
+            }
+
+            string query2 = "UPDATE movies SET stock_count = @StockCount WHERE Id = @ID;";
+
+            using (var con = new SQLiteConnection(connectionString))
+            {
+                con.Open();
+                SQLiteCommand command = new SQLiteCommand(con);
+                command.CommandText = query2;
+                command.Parameters.AddWithValue("@StockCount", stockCount);
+                command.Parameters.AddWithValue("@ID", item_id);
+                command.ExecuteNonQuery();
+            }
+        }
+
         public static DataSet UserQuery(String connectionString)
         {
-            string query = "select id, username, employee_name from users";
+            string query = "select id, username, employee_name from users where user_type = 1";
             using (var con = new SQLiteConnection(connectionString))
             {
                 con.Open();
@@ -158,7 +216,7 @@ namespace MovieRental
 
         public static DataSet SaleQuery(String connectionString)
         {
-            string query = "select * from sales";
+            string query = "select sale_id, movie_name, price  from sales, movies where item_id = id";
             using (var con = new SQLiteConnection(connectionString))
             {
                 con.Open();
@@ -174,9 +232,9 @@ namespace MovieRental
         }
 
 
-        public static void UyeEkle(string connectionString, string userName, string password)
+        public static void UyeEkle(string connectionString, string userName, string password, string employeeName)
         {
-            string query = "INSERT INTO users (username, password, user_type) VALUES (@username, @password, 1)";
+            string query = "INSERT INTO users (username, password, user_type, employee_name) VALUES (@username, @password, 1, @employeeName)";
             string hashedPass = Security.Hash(password);
 
             using (var con = new SQLiteConnection(connectionString))
@@ -186,6 +244,7 @@ namespace MovieRental
                 command.CommandText = query;
                 command.Parameters.AddWithValue("@username", userName);
                 command.Parameters.AddWithValue("@password", hashedPass);
+                command.Parameters.AddWithValue("@employee_name", employeeName);
 
                 command.ExecuteNonQuery();
             }

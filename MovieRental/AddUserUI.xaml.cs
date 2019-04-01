@@ -29,7 +29,7 @@ namespace MovieRental
 
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
-            DatabaseTransactions.UyeEkle(connectionString, textBoxID.Text, textBoxPassword.Password);
+            DatabaseTransactions.UyeEkle(connectionString, textBoxUsername.Text, textBoxPassword.Password, textBoxEmployeeName.Text);
             MessageBox.Show("Başarılı!");
             this.Close();
         }

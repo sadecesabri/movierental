@@ -1,0 +1,25 @@
+﻿<Window x:Class="MovieRental.RentMovie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MovieRental"
+        mc:Ignorable="d"
+        Title="RentMovie" Height="400" Width="400">
+    <Grid Background="#212121">
+        <Label Content="Movie ID:" HorizontalAlignment="Left" Margin="40,32,0,0" VerticalAlignment="Top" Width="110" Height="29" Foreground="#FFDFE4EA"/>
+        <TextBox x:Name="textBoxMovieID" IsEnabled="False" HorizontalAlignment="Left" Height="26" Margin="137,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center" Background="#FFB3B3B3"/>
+
+        <Label Content="Movie Name:" HorizontalAlignment="Left" Margin="40,72,0,0" VerticalAlignment="Top" Width="110" Height="29" Foreground="#FFDFE4EA"/>
+        <TextBox x:Name="textBoxMovieName" IsEnabled="False" HorizontalAlignment="Left" Height="26" Margin="137,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center" Background="#FFB3B3B3"/>
+
+        <Label Content="Renter Name:" HorizontalAlignment="Left" Margin="40,112,0,0" VerticalAlignment="Top" Height="110" Width="80" Foreground="#dfe4ea"/>
+        <TextBox x:Name="textBoxRenterName" HorizontalAlignment="Left" Height="26" Margin="137,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center" Background="#FFB3B3B3"/>
+
+        <Label Content="Return Date:" HorizontalAlignment="Left" Margin="40,152,0,0" VerticalAlignment="Top" Width="110" Height="29" Foreground="#FFDFE4EA"/>
+        <TextBox x:Name="textBoxReturnDate" HorizontalAlignment="Left" Height="26" Margin="137,150,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center" Background="#FFB3B3B3"/>
+        
+        <Button x:Name="buttonOK" Content="OK" HorizontalAlignment="Center" Margin="-120,245,0,0" VerticalAlignment="Top" Width="90" Height="35" Background="#FF1DB954" Foreground="#dfe4ea" Click="ButtonOK_Click"/>
+        <Button x:Name="buttonCancel" Content="Cancel" HorizontalAlignment="Center" Margin="120,245,0,0" VerticalAlignment="Top" Width="90" Height="35" Background="#212121" Foreground="#dfe4ea"  BorderThickness="0"/>
+    </Grid>
+</Window>

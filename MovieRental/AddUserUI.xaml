@@ -6,19 +6,21 @@
         xmlns:local="clr-namespace:MovieRental"
         mc:Ignorable="d"
         Title="AddUserUI" Height="300" Width="300">
-        <Grid Background="#59B89E2C">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30*"/>
-            <ColumnDefinition Width="127*"/>
-        </Grid.ColumnDefinitions>
-        <TextBox x:Name="textBoxID" HorizontalAlignment="Left" Height="26" Margin="21,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="138" VerticalContentAlignment="Center" Grid.Column="1"/>
-        <PasswordBox x:Name="textBoxPassword" HorizontalAlignment="Left" Height="26" Margin="21,146,0,0" VerticalAlignment="Top" Width="138" VerticalContentAlignment="Center" Grid.Column="1"/>
-        <Label Content="Kullanıcı Adı:
-               " HorizontalAlignment="Left" Margin="21,62,0,0" VerticalAlignment="Top" Width="97" RenderTransformOrigin="1.333,-0.731" Height="29" Grid.Column="1"/>
-        <Label Content="Şifre:
-" HorizontalAlignment="Left" Margin="21,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.538,0.077" Height="29" Width="45" Grid.Column="1"/>
-        <Button x:Name="buttonLogin" Content="Ekle" HorizontalAlignment="Left" Margin="21,195,0,0" VerticalAlignment="Top" Width="50" Height="35" Background="#FF5BB432" Foreground="White" Click="buttonLogin_Click" Grid.Column="1"/>
-        <Button Content="İptal" Grid.Column="1" HorizontalAlignment="Left" Margin="109,195,0,0" Height="35" VerticalAlignment="Top" Width="50" Click="Button_Click"/>
+    <Grid Background="#59B89E2C">
+
+        <Label Content="Username:" HorizontalAlignment="Left" Margin="70,20,0,0" VerticalAlignment="Top" Width="100"  Height="29"/>
+        <TextBox x:Name="textBoxUsername" HorizontalAlignment="Left" Height="26" Margin="70,47,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" VerticalContentAlignment="Center"/>
+
+        <Label Content="Employee Name:" HorizontalAlignment="Left" Margin="70,70,0,0" VerticalAlignment="Top" Width="100"  Height="29"/>
+        <TextBox x:Name="textBoxEmployeeName" HorizontalAlignment="Left" Height="26" Margin="70,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" VerticalContentAlignment="Center"/>
+
+
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="70,119,0,0" VerticalAlignment="Top" Height="29" Width="97"/>
+        <PasswordBox x:Name="textBoxPassword" HorizontalAlignment="Left" Height="25" Margin="70,148,0,0" VerticalAlignment="Top" Width="140" VerticalContentAlignment="Center"/>
+        
+        
+        <Button x:Name="buttonLogin" Content="Add" HorizontalAlignment="Center" Margin="-80,195,0,0" VerticalAlignment="Top" Width="50" Height="35" Background="#FF5BB432" Foreground="White" Click="buttonLogin_Click" Grid.Column="1"/>
+        <Button Content="Cancel" HorizontalAlignment="Center" Margin="50,195,0,0" Height="35" VerticalAlignment="Top" Width="50" Click="Button_Click"/>
 
     </Grid>
 </Window>

@@ -9,35 +9,37 @@
     <Grid Background="#212121">
         <Button x:Name="exit_Button" Panel.ZIndex="99" Content="X" Foreground="#dfe4ea" HorizontalAlignment="Right" Margin="0,00,0,0" VerticalAlignment="Top" Width="30" Background="#FFE02525" Height="30" Click="Button_Click"/>
 
-        <TabControl Margin="0,5,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#00ffffff" BorderBrush="{x:Null}">
-            <TabItem Header="Movies" Background="#121212" Foreground="#dfe4ea" Height="25">
+        <TabControl x:Name="tabcontrol" Margin="0,5,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#00ffffff" BorderBrush="{x:Null}">
+            <TabItem x:Name="moviesTab" IsEnabled="True" Header="Movies" Background="#121212" Foreground="#dfe4ea" Height="25">
                 <Grid>
                     <DataGrid x:FieldModifier="public" Background="#171717" x:Name="dataGridMovies" HorizontalAlignment="Stretch" Margin="0,0,285,0" VerticalAlignment="Stretch" IsReadOnly="True" RowBackground="#dfe4ea" SelectionMode="Single">
                     </DataGrid>
-                    <Button x:Name="buttonAddMovie" Foreground="#dfe4ea" Content="Ekle" HorizontalAlignment="Right" Margin="0,120,50,0" VerticalAlignment="Top" Width="180" Height="60" Click="buttonAddMovie_Click" Background="#01579B"/>
-                    <Button x:Name="buttonDeleteMovie" Foreground="#dfe4ea" Content="Sil" HorizontalAlignment="Right" Margin="0,280,50,0" VerticalAlignment="Top" Width="180" Height="60" Click="buttonDeleteMovie_Click" Background="#01579B"/>
-                    <Button x:Name="buttonEditMovie" Foreground="#dfe4ea" Content="Düzenle" HorizontalAlignment="Right" Margin="0,200,50,0" VerticalAlignment="Top" Width="180" Height="60" Click="buttonEditMovie_Click" Background="#01579B"/>
+                    <Button x:Name="buttonAddMovie" Foreground="#dfe4ea" Content="Add" HorizontalAlignment="Right" Margin="0,120,50,0" VerticalAlignment="Top" Width="180" Height="60" Click="buttonAddMovie_Click" Background="#01579B"/>
+                    <Button x:Name="buttonDeleteMovie" Foreground="#dfe4ea" Content="Delete" HorizontalAlignment="Right" Margin="0,280,50,0" VerticalAlignment="Top" Width="180" Height="60" Click="buttonDeleteMovie_Click" Background="#01579B"/>
+                    <Button x:Name="buttonEditMovie" Foreground="#dfe4ea" Content="Edit" HorizontalAlignment="Right" Margin="0,200,50,0" VerticalAlignment="Top" Width="180" Height="60" Click="buttonEditMovie_Click" Background="#01579B"/>
+                    <Button x:Name="buttonSellMovie" Foreground="#dfe4ea" Content="Sell" HorizontalAlignment="Right" Margin="0,0,50,80" VerticalAlignment="Bottom" Width="180" Height="60" Background="#1db954" Click="ButtonSellMovie_Click"/>
+                    <Button x:Name="buttonRentMovie" Foreground="#dfe4ea" Content="Rent" HorizontalAlignment="Right" Margin="0,0,50,160" VerticalAlignment="Bottom" Width="180" Height="60" Background="#1db954" Click="ButtonRentMovie_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Sales" Background="#121212" Foreground="#dfe4ea" Height="25" VerticalAlignment="Top">
+            <TabItem x:Name="salesTab" IsEnabled="True" Header="Sales" Background="#121212" Foreground="#dfe4ea" Height="25" VerticalAlignment="Top">
                 <Grid>
                     <DataGrid x:FieldModifier="public" Background="#171717" x:Name="dataGridSales" HorizontalAlignment="Stretch" Margin="0,0,285,0" VerticalAlignment="Stretch" IsReadOnly="True" RowBackground="#dfe4ea" SelectionMode="Single">
                     </DataGrid>
-
+                    <Button x:Name="buttonCancelSale" Foreground="#dfe4ea" Content="Rent" HorizontalAlignment="Right" Margin="0,0,50,160" VerticalAlignment="Bottom" Width="180" Height="60" Background="#1db954" Click="ButtonRentMovie_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Rents" Background="#121212" Foreground="#dfe4ea" Height="25">
+            <TabItem x:Name="rentsTab" IsEnabled="True" Header="Rents" Background="#121212" Foreground="#dfe4ea" Height="25">
                 <Grid>
                     <DataGrid Background="#171717" x:FieldModifier="public" x:Name="dataGridRents" HorizontalAlignment="Stretch" Margin="0,0,285,0" VerticalAlignment="Stretch" IsReadOnly="True" RowBackground="#dfe4ea" SelectionMode="Single">
                     </DataGrid>
-                    
+                    <Button x:Name="buttonCancelRent" Foreground="#dfe4ea" Content="Rent" HorizontalAlignment="Right" Margin="0,0,50,160" VerticalAlignment="Bottom" Width="180" Height="60" Background="#1db954" Click="ButtonRentMovie_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Employees" Background="#121212" Foreground="#dfe4ea" Height="25">
+            <TabItem x:Name="employeesTab" IsEnabled="True" Header="Employees" Background="#121212" Foreground="#dfe4ea" Height="25">
                 <Grid>
-                    <DataGrid Background="#171717" x:Name="dataGridUsers" x:FieldModifier="public" HorizontalAlignment="Stretch" Margin="0,0,285,0" VerticalAlignment="Stretch" IsReadOnly="True" RowBackground="#dfe4ea" SelectionMode="Single">
-                    </DataGrid>
-                    <Button x:Name="buttonAddUser" IsEnabled="False" Foreground="#dfe4ea" Content="Üye Ekle" HorizontalAlignment="Right" Margin="0,0,50,50" VerticalAlignment="Bottom" Width="180" Height="60" Click="buttonAddUser_Click" Background="#1db954"/>
+                    <DataGrid Background="#171717" x:Name="dataGridUsers" x:FieldModifier="public" HorizontalAlignment="Stretch" Margin="0,0,285,0" VerticalAlignment="Stretch" IsReadOnly="True" RowBackground="#dfe4ea" SelectionMode="Single"/>
+                    <Button x:Name="buttonAddUser" IsEnabled="False" Foreground="#dfe4ea" Content="Add User" HorizontalAlignment="Right" Margin="0,0,50,50" VerticalAlignment="Bottom" Width="180" Height="60" Click="buttonAddUser_Click" Background="#1db954"/>
+                    <Button x:Name="buttonDeleteUser" IsEnabled="False" Foreground="#dfe4ea" Content="Delete User" HorizontalAlignment="Right" Margin="0,0,50,150" VerticalAlignment="Bottom" Width="180" Height="60" Background="#1db954" Click="ButtonDeleteUser_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

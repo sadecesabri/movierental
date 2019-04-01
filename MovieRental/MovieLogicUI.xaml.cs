@@ -110,7 +110,7 @@ namespace MovieRental
             movie.Category = comboBoxCategory.Text;
             movie.Duration = Convert.ToInt32(textBoxDuration.Text);
             movie.StockCount = Convert.ToInt32(textBoxStockCount.Text);
-            movie.Price = Convert.ToDouble(textBoxPrice);
+            movie.Price = Convert.ToDouble(textBoxPrice.Text);
             return movie;
         }
     }
