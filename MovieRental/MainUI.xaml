@@ -25,14 +25,14 @@
                 <Grid>
                     <DataGrid x:FieldModifier="public" Background="#171717" x:Name="dataGridSales" HorizontalAlignment="Stretch" Margin="0,0,285,0" VerticalAlignment="Stretch" IsReadOnly="True" RowBackground="#dfe4ea" SelectionMode="Single">
                     </DataGrid>
-                    <Button x:Name="buttonCancelSale" Foreground="#dfe4ea" Content="Rent" HorizontalAlignment="Right" Margin="0,0,50,160" VerticalAlignment="Bottom" Width="180" Height="60" Background="#1db954" Click="ButtonRentMovie_Click"/>
+                    <Button x:Name="buttonCancelSale" Foreground="#dfe4ea" Content="Cancel Sale" HorizontalAlignment="Right" Margin="0,0,50,160" VerticalAlignment="Bottom" Width="180" Height="60" Background="#1db954" Click="ButtonCancelSale_Click"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="rentsTab" IsEnabled="True" Header="Rents" Background="#121212" Foreground="#dfe4ea" Height="25">
                 <Grid>
                     <DataGrid Background="#171717" x:FieldModifier="public" x:Name="dataGridRents" HorizontalAlignment="Stretch" Margin="0,0,285,0" VerticalAlignment="Stretch" IsReadOnly="True" RowBackground="#dfe4ea" SelectionMode="Single">
                     </DataGrid>
-                    <Button x:Name="buttonCancelRent" Foreground="#dfe4ea" Content="Rent" HorizontalAlignment="Right" Margin="0,0,50,160" VerticalAlignment="Bottom" Width="180" Height="60" Background="#1db954" Click="ButtonRentMovie_Click"/>
+                    <Button x:Name="buttonCancelRent" Foreground="#dfe4ea" Content="Rent" HorizontalAlignment="Right" Margin="0,0,50,160" VerticalAlignment="Bottom" Width="180" Height="60" Background="#1db954" Click="ButtonCancelRent_Click"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="employeesTab" IsEnabled="True" Header="Employees" Background="#121212" Foreground="#dfe4ea" Height="25">

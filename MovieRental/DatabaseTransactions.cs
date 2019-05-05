@@ -20,13 +20,13 @@ namespace MovieRental
                 con.Open();
                 SQLiteCommand command = new SQLiteCommand(con);
                 command.CommandText = query;
-                command.Parameters.AddWithValue("@book_name", movie.MovieName);
-                command.Parameters.AddWithValue("@author", movie.Director);
-                command.Parameters.AddWithValue("@publish_date", movie.ReleaseDate);
-                command.Parameters.AddWithValue("@translater", movie.Imdb);
+                command.Parameters.AddWithValue("@movie_name", movie.MovieName);
+                command.Parameters.AddWithValue("@director", movie.Director);
+                command.Parameters.AddWithValue("@release_date", movie.ReleaseDate);
+                command.Parameters.AddWithValue("@imdb", movie.Imdb);
                 command.Parameters.AddWithValue("@category", movie.Category);
-                command.Parameters.AddWithValue("@Page", movie.Duration);
-                command.Parameters.AddWithValue("@borrowed_by", movie.StockCount);
+                command.Parameters.AddWithValue("@duration", movie.Duration);
+                command.Parameters.AddWithValue("@stock_count", movie.StockCount);
                 command.Parameters.AddWithValue("@price", movie.Price);
 
                 command.ExecuteNonQuery();    
@@ -39,6 +39,32 @@ namespace MovieRental
             {
                 con.Open();
                 string query = "DELETE FROM movies WHERE Id = '" + id + "'";
+                using (SQLiteCommand command = new SQLiteCommand(query, con))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void CancelRent(string connectionString, int id)
+        {
+            using (var con = new SQLiteConnection(connectionString))
+            {
+                con.Open();
+                string query = "DELETE FROM rents WHERE rent_id = '" + id + "'";
+                using (SQLiteCommand command = new SQLiteCommand(query, con))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void CancelSale(string connectionString, int id)
+        {
+            using (var con = new SQLiteConnection(connectionString))
+            {
+                con.Open();
+                string query = "DELETE FROM sales WHERE sale_id = '" + id + "'";
                 using (SQLiteCommand command = new SQLiteCommand(query, con))
                 {
                     command.ExecuteNonQuery();
@@ -234,7 +260,7 @@ namespace MovieRental
 
         public static void UyeEkle(string connectionString, string userName, string password, string employeeName)
         {
-            string query = "INSERT INTO users (username, password, user_type, employee_name) VALUES (@username, @password, 1, @employeeName)";
+            string query = "INSERT INTO users (username, password, user_type, employee_name) VALUES (@username, @password, @userType, @employeeName)";
             string hashedPass = Security.Hash(password);
 
             using (var con = new SQLiteConnection(connectionString))
@@ -244,7 +270,8 @@ namespace MovieRental
                 command.CommandText = query;
                 command.Parameters.AddWithValue("@username", userName);
                 command.Parameters.AddWithValue("@password", hashedPass);
-                command.Parameters.AddWithValue("@employee_name", employeeName);
+                command.Parameters.AddWithValue("@userType", 1);
+                command.Parameters.AddWithValue("@employeeName", employeeName);
 
                 command.ExecuteNonQuery();
             }

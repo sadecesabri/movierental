@@ -108,17 +108,6 @@ namespace MovieRental
             dataGridMovies.Columns[8].Width = 60;
         }
 
-        void SetUsersDataGrid()
-        {
-            dataGridUsers.Items.Refresh();
-            dataGridUsers.Columns[0].Header = "IDddd";
-            dataGridUsers.Columns[0].Width = 50;
-
-            //dataGridMovies.Columns[1].Width = 50;
-            //dataGridMovies.Columns[2].Width = 50;
-            //dataGridMovies.Columns[3].Width = 50;
-        }
-
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -127,7 +116,7 @@ namespace MovieRental
 
         private void buttonAddUser_Click(object sender, RoutedEventArgs e)
         {
-            AddUserUI addUserUI = new AddUserUI(connectionString);
+            AddUserUI addUserUI = new AddUserUI(connectionString, this);
             addUserUI.Show();
         }
 
@@ -209,6 +198,34 @@ namespace MovieRental
                 int userID = Convert.ToInt32(((DataRowView)dataGridUsers.SelectedItem).Row.ItemArray[0]);
                 DatabaseTransactions.DeleteUser(connectionString, userID);
                 LoadDataGrid(dataGridUsers, "users");
+            }
+            else
+            {
+                MessageBox.Show("Bir seçim yapın");
+            }
+        }
+
+        private void ButtonCancelSale_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGridSales.SelectedItem != null)
+            {
+                int saleID = Convert.ToInt32(((DataRowView)dataGridSales.SelectedItem).Row.ItemArray[0]);
+                DatabaseTransactions.CancelSale(connectionString, saleID);
+                LoadDataGrid(dataGridSales, "sales");
+            }
+            else
+            {
+                MessageBox.Show("Bir seçim yapın");
+            }
+        }
+
+        private void ButtonCancelRent_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGridRents.SelectedItem != null)
+            {
+                int rentID = Convert.ToInt32(((DataRowView)dataGridRents.SelectedItem).Row.ItemArray[0]);
+                DatabaseTransactions.CancelRent(connectionString, rentID);
+                LoadDataGrid(dataGridRents, "rents");
             }
             else
             {

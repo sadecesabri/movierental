@@ -20,10 +20,12 @@ namespace MovieRental
     public partial class AddUserUI : Window
     {
         private string connectionString;
+        MainUI mu;
 
-        public AddUserUI(string connectionString)
+        public AddUserUI(string connectionString, MainUI mu)
         {
             this.connectionString = connectionString;
+            this.mu = mu;
             InitializeComponent();
         }
 
@@ -31,6 +33,7 @@ namespace MovieRental
         {
             DatabaseTransactions.UyeEkle(connectionString, textBoxUsername.Text, textBoxPassword.Password, textBoxEmployeeName.Text);
             MessageBox.Show("Başarılı!");
+            mu.LoadDataGrid(mu.dataGridUsers, "users");
             this.Close();
         }
 
